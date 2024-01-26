@@ -1,5 +1,5 @@
 {
-  "supervisionUrls": ["ws://server:8010/OCPP16/5c866e81a2d9593de43efdb4"],
+  "supervisionUrls": ["ws://server:8010/OCPP16/5c866e81a2d9593de43efdb4/65b369b314f9299510e5bfaf"],
   "supervisionUrlDistribution": "round-robin",
   "log": {
     "file": "/dev/stdout",
