@@ -1845,7 +1845,7 @@ export class ChargingStation extends EventEmitter {
   private async handleIncomingMessage (request: IncomingRequest): Promise<void> {
     const [messageType, messageId, commandName, commandPayload] = request
     if (this.stationInfo?.enableStatistics === true) {
-      this.performanceStatistics?.addRequestStatistic(commandName, messageType)
+      this.performanceStatistics?.addRequestStatistic(commandName, messageType, Buffer.byteLength(JSON.stringify(commandPayload)))
     }
     logger.debug(
       `${this.logPrefix()} << Command '${commandName}' received request payload: ${JSON.stringify(

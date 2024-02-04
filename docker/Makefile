@@ -22,7 +22,7 @@ $(NAME): $(submodules-init)
 	docker compose -p $(PROJECT_NAME) up -d
 
 $(NAME)-force: $(submodules-init)
-	docker compose -p $(PROJECT_NAME) up -d --build --force-recreate
+	docker compose -p $(PROJECT_NAME) -f docker-compose.yml up -d --build --force-recreate
 
 all: $(NAME)
 

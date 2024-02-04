@@ -256,7 +256,8 @@ export abstract class OCPPRequestService {
           if (chargingStation.stationInfo?.enableStatistics === true) {
             chargingStation.performanceStatistics?.addRequestStatistic(
               commandName,
-              MessageType.CALL_RESULT_MESSAGE
+              MessageType.CALL_RESULT_MESSAGE,
+              Buffer.byteLength(JSON.stringify(payload)),
             )
           }
           // Handle the request's response
@@ -327,7 +328,7 @@ export abstract class OCPPRequestService {
         }
 
         if (chargingStation.stationInfo?.enableStatistics === true) {
-          chargingStation.performanceStatistics?.addRequestStatistic(commandName, messageType)
+          chargingStation.performanceStatistics?.addRequestStatistic(commandName, messageType, Buffer.byteLength(JSON.stringify(messagePayload)))
         }
         const messageToSend = this.buildMessageToSend(
           chargingStation,

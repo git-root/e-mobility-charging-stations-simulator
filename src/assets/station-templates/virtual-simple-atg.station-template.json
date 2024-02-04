@@ -9,6 +9,7 @@
   "currentOutType": "DC",
   "numberOfConnectors": 3,
   "randomConnectors": false,
+  "enableStatistics": true,
   "Configuration": {
     "configurationKey": [
       {

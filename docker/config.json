@@ -1,12 +1,8 @@
 {
-  "supervisionUrls": ["ws://server:8010/OCPP16/5c866e81a2d9593de43efdb4/65b369b314f9299510e5bfaf"],
+  "supervisionUrls": [
+    "ws://server:8010/OCPP16/5c866e81a2d9593de43efdb4/65bfa60b99f1de48e10b500c"
+  ],
   "supervisionUrlDistribution": "round-robin",
-  "log": {
-    "file": "/dev/stdout",
-    "errorFile": "/dev/stderr",
-    "console": false,
-    "rotate": false
-  },
   "worker": {
     "processType": "workerSet",
     "elementsPerWorker": 1,
@@ -14,7 +10,29 @@
     "poolMaxSize": 16
   },
   "uiServer": {
-    "enabled": true
+    "enabled": true,
+    "type": "ws",
+    "authentication": {
+      "enabled": false,
+      "type": "basic-auth",
+      "username": "admin",
+      "password": "admin"
+    }
+  },
+  "performanceStorage": {
+    "enabled": true,
+    "type": "jsonfile",
+    "uri": "file:///performance/performanceRecords.json"
+  },
+  "log": {
+    "enabled": true,
+    "file": "logs/combined.log",
+    "errorFile": "logs/error.log",
+    "statisticsInterval": 60,
+    "level": "info",
+    "console": true,
+    "format": "simple",
+    "rotate": true
   },
   "stationTemplateUrls": [
     {
@@ -39,7 +57,7 @@
     },
     {
       "file": "virtual-simple-atg.station-template.json",
-      "numberOfStations": 10
+      "numberOfStations": 1
     }
   ]
 }

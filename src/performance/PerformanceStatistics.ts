@@ -110,7 +110,8 @@ export class PerformanceStatistics {
 
   public addRequestStatistic (
     command: RequestCommand | IncomingRequestCommand,
-    messageType: MessageType
+    messageType: MessageType,
+    messageSize?: int
   ): void {
     switch (messageType) {
       case MessageType.CALL_MESSAGE:
@@ -121,10 +122,19 @@ export class PerformanceStatistics {
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           ++this.statistics.statisticsData.get(command)!.requestCount!
         } else {
+          if(typeof messageSize !== 'undefined'){
+          this.statistics.statisticsData.set(command, {
+            ...this.statistics.statisticsData.get(command),
+            requestCount: 1,
+            messageSize: messageSize 
+          })
+          } else {
           this.statistics.statisticsData.set(command, {
             ...this.statistics.statisticsData.get(command),
             requestCount: 1
           })
+	
+}
         }
         break
       case MessageType.CALL_RESULT_MESSAGE:
